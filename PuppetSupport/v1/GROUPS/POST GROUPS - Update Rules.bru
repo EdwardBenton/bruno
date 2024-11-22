@@ -1,0 +1,60 @@
+meta {
+  name: POST GROUPS - Update Rules
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://{{peprimary}}:4433/classifier-api/v1/groups/{{groupid}}
+  body: json
+  auth: apikey
+}
+
+headers {
+  : 
+}
+
+auth:apikey {
+  key: X-AUTHENTICATION
+  value: {{rbactoken}}
+  placement: header
+}
+
+body:json {
+  {
+    "rule": [
+      "and",
+      [
+        ">=",
+        [
+          "fact",
+          "system_uptime",
+          "hours"
+        ],
+        "9"
+      ],
+      [
+        ">=",
+        [
+          "fact",
+          "aio_agent_version"
+        ],
+        "7"
+      ]
+    ]
+  }
+}
+
+vars:pre-request {
+  groupid: 014fa7df-0d86-4f42-a50b-d26c734f5f2c
+}
+
+docs {
+  Example POST update to the GROUPS endpoint which modifies a group to add some rules.
+  
+  The {{groupid}} variable needs to be set in the vars tab or replaced with a group ID in the URL above.
+  
+  The body of this example query modifies the rules for the specified node group to add two simple conditions joined by an AND
+  
+  https://www.puppet.com/docs/pe/2023.8/groups_endpoint#groups_endpoint
+}

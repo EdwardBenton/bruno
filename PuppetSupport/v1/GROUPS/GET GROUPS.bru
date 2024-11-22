@@ -1,0 +1,21 @@
+meta {
+  name: GET GROUPS
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://{{peprimary}}:4433/classifier-api/v1/groups
+  body: none
+  auth: none
+}
+
+headers {
+  X-AUTHENTICATION: {{rbactoken}}
+}
+
+docs {
+  This is a simple GET query to the groups endpoint to retrieve the list of node groups and their rules.
+  
+  https://www.puppet.com/docs/pe/2023.8/groups_endpoint#groups_endpoint
+}
