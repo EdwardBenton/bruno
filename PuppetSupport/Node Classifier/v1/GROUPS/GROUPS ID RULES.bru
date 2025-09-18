@@ -1,0 +1,21 @@
+meta {
+  name: GROUPS ID RULES
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://{{peprimary}}:4433/classifier-api/v1/groups/{{groupid}}/rules
+  body: none
+  auth: none
+}
+
+headers {
+  X-AUTHENTICATION: {{rbactoken}}
+}
+
+docs {
+  Resolve the rules for a specific node group, and then translate those rules to work with the PuppetDB nodes and inventory endpoints.
+  
+  https://www.puppet.com/docs/pe/2023.8/groups_endpoint#get-v1-groups-id-rules
+}

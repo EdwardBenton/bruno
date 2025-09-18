@@ -1,0 +1,25 @@
+meta {
+  name: USERS/<SID>
+  type: http
+  seq: 3
+}
+
+get {
+  url: https://{{peprimary}}:4433/rbac-api/v1/users/{{sid}}
+  body: none
+  auth: inherit
+}
+
+headers {
+  X-AUTHENTICATION: {{rbactoken}}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Fetches information about specific users identified by subject ID (<sid>).
+  
+  https://help.puppet.com/pe/2023.8/topics/rbac_api_v1_user_get_users_name.htm
+}

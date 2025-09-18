@@ -1,0 +1,19 @@
+meta {
+  name: USERS/CURRENT
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://{{peprimary}}:4433/rbac-api/v1/users/current
+  body: none
+  auth: inherit
+}
+
+headers {
+  X-AUTHENTICATION: {{rbactoken}}
+}
+
+settings {
+  encodeUrl: true
+}
