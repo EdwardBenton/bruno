@@ -1,0 +1,29 @@
+meta {
+  name: USERS/<SID>/TOKENS
+  type: http
+  seq: 4
+}
+
+get {
+  url: https://{{peprimary}}:4433/rbac-api/v1/users/{{sid}}/tokens
+  body: none
+  auth: inherit
+}
+
+headers {
+  X-AUTHENTICATION: {{rbactoken}}
+}
+
+vars:pre-request {
+  sid: 42bf351c-f9ec-40af-84ad-e976fec7f4bd
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Fetches a list of tokens for a given user.
+  
+  https://help.puppet.com/pe/2023.8/topics/rbac-api-v1-users-user-id-tokens.htm
+}

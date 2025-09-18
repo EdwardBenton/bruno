@@ -1,0 +1,15 @@
+meta {
+  name: USERS
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://{{peprimary}}:4433/rbac-api/v1/users
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

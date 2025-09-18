@@ -1,0 +1,18 @@
+meta {
+  name: GROUPS - ID - UNPIN
+  type: http
+  seq: 5
+}
+
+post {
+  url: https://{{peprimary}}:4433/classifier-api/v1/groups/{{groupid}}/unpin
+  body: none
+  auth: none
+}
+
+docs {
+  Unpin specific nodes from a node group
+  Remember to populate your groupid variable
+  
+  https://www.puppet.com/docs/pe/2023.8/groups_endpoint#post_v1_groups_id_pin
+}
