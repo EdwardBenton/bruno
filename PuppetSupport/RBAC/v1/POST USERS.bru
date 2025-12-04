@@ -1,0 +1,37 @@
+meta {
+  name: POST USERS
+  type: http
+  seq: 5
+}
+
+post {
+  url: https://{{peprimary}}:4433/rbac-api/v1/users
+  body: json
+  auth: inherit
+}
+
+headers {
+  X-AUTHENTICATION: {{rbactoken}}
+}
+
+body:json {
+  {"login": "KaloHill",
+       "email": "kalohill@example.com", 
+       "display_name": "Kalo Hill",
+       "role_ids": [3],
+       "password": "Welc0me!ToPuppet"}
+}
+
+settings {
+  encodeUrl: true
+}
+
+docs {
+  Create a local user
+  
+  As this is a POST - check the Body tab to modify the payload. An example has already been populated.
+  Pay particular attention to the Role IDs, you will need to ensure the specified IDs exist on the target instance.
+  
+  
+  https://help.puppet.com/pe/2023.8/topics/rbac_api_v1_user_post_users.htm
+}

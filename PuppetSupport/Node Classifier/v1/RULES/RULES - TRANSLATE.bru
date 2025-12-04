@@ -1,0 +1,69 @@
+meta {
+  name: RULES - TRANSLATE
+  type: http
+  seq: 7
+}
+
+post {
+  url: https://{{peprimary}}:4433/classifier-api/v1/rules/translate
+  body: json
+  auth: apikey
+}
+
+headers {
+  X-AUTHENTICATION: {{rbactoken}}
+}
+
+auth:apikey {
+  key: X-AUTHENTICATION
+  value: {{rbactoken}}
+  placement: header
+}
+
+body:json {
+  {
+    "rule": [
+      "or",
+      [
+        "=",
+        "name",
+        "pe-server-019690-0.us-west1-a.c.customer-support-scratchpad.internal"
+      ]
+    ],
+    "rule_with_inherited": [
+      "and",
+      [
+        "or",
+        [
+          "=",
+          "name",
+          "pe-server-019690-0.us-west1-a.c.customer-support-scratchpad.internal"
+        ]
+      ],
+      [
+        "and",
+        [
+          "~",
+          "name",
+          ".*"
+        ]
+      ]
+    ],
+    "translated": {
+      "nodes_query_format": [
+        "=",
+        "certname",
+        "pe-server-019690-0.us-west1-a.c.customer-support-scratchpad.internal"
+      ],
+      "inventory_query_format": [
+        "=",
+        "certname",
+        "pe-server-019690-0.us-west1-a.c.customer-support-scratchpad.internal"
+      ]
+    }
+  }
+}
+
+vars:pre-request {
+  groupid: 014fa7df-0d86-4f42-a50b-d26c734f5f2c
+}

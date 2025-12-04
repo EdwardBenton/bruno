@@ -1,0 +1,31 @@
+meta {
+  name: GROUPS - ID - NODES
+  type: http
+  seq: 7
+}
+
+get {
+  url: https://{{peprimary}}:4433/classifier-api/v1/groups/{{groupid}}/nodes
+  body: json
+  auth: apikey
+}
+
+headers {
+  X-AUTHENTICATION: {{rbactoken}}
+}
+
+auth:apikey {
+  key: X-AUTHENTICATION
+  value: {{rbactoken}}
+  placement: header
+}
+
+vars:pre-request {
+  groupid: 10be5a71-fd2c-4536-a4e6-834c02c12086
+}
+
+docs {
+  Resolve all the nodes associated with a node group. This endpoint combines all the rules for the group and queries PuppetDB for the result.
+  
+  https://help.puppet.com/pe/current/topics/get-v1-groups-id-nodes.htm
+}

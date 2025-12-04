@@ -1,0 +1,65 @@
+meta {
+  name: NODES
+  type: http
+  seq: 7
+}
+
+get {
+  url: https://{{peprimary}}:4433/classifier-api/v1/nodes
+  body: json
+  auth: none
+}
+
+headers {
+  X-AUTHENTICATION: {{rbactoken}}
+}
+
+body:json {
+  {
+    "rule": [
+      "or",
+      [
+        "=",
+        "name",
+        "pe-server-019690-0.us-west1-a.c.customer-support-scratchpad.internal"
+      ]
+    ],
+    "rule_with_inherited": [
+      "and",
+      [
+        "or",
+        [
+          "=",
+          "name",
+          "pe-server-019690-0.us-west1-a.c.customer-support-scratchpad.internal"
+        ]
+      ],
+      [
+        "and",
+        [
+          "~",
+          "name",
+          ".*"
+        ]
+      ]
+    ],
+    "translated": {
+      "nodes_query_format": [
+        "=",
+        "certname",
+        "pe-server-019690-0.us-west1-a.c.customer-support-scratchpad.internal"
+      ],
+      "inventory_query_format": [
+        "=",
+        "certname",
+        "pe-server-019690-0.us-west1-a.c.customer-support-scratchpad.internal"
+      ]
+    }
+  }
+}
+
+docs {
+  Retrieve check-in history for all nodes that have checked in with the node classifier.
+  
+  https://help.puppet.com/pe/current/topics/get_v1_nodes.htm
+}

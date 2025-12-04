@@ -1,0 +1,28 @@
+meta {
+  name: DOWNLOAD SCE_LINUX
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://forgeapi.puppet.com/v3/files/puppetlabs-sce_linux-2.5.0.tar.gz
+  body: none
+  auth: bearer
+}
+
+headers {
+  X-AUTHENTICATION: Bearer {{forgetoken}}
+}
+
+auth:bearer {
+  token: {{forgetoken}}
+}
+
+vars:pre-request {
+  module_slug: puppetlabs-sce_linux
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

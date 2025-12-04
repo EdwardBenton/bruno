@@ -14,6 +14,10 @@ headers {
   X-AUTHENTICATION: {{rbactoken}}
 }
 
+vars:pre-request {
+  groupid: 5ea9e669-b403-46e4-8d2d-2d16094e3d37
+}
+
 docs {
   Resolve the rules for a specific node group, and then translate those rules to work with the PuppetDB nodes and inventory endpoints.
   

@@ -1,0 +1,40 @@
+meta {
+  name: FETCH MODULE
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{forgeurl}}/v3/modules/{{module_slug}}
+  body: none
+  auth: bearer
+}
+
+headers {
+  X-AUTHENTICATION: Bearer {{forgetoken}}
+}
+
+auth:bearer {
+  token: {{forgetoken}}
+}
+
+vars:pre-request {
+  module_slug: puppetlabs-sce_linux
+}
+
+vars:post-response {
+  fileuri: res.body.fileUri
+  res.body.file_uri
+  
+  res.body.file_uri
+  res.body.file_uri
+}
+
+script:post-response {
+  bru.setEnvVar('fileUri', res.body.fileUri);
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

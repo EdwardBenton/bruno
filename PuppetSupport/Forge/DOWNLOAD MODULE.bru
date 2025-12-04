@@ -1,0 +1,28 @@
+meta {
+  name: DOWNLOAD MODULE
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{forgeurl}}{{fileuri}}
+  body: none
+  auth: bearer
+}
+
+headers {
+  X-AUTHENTICATION: Bearer {{forgetoken}}
+}
+
+auth:bearer {
+  token: {{forgetoken}}
+}
+
+vars:pre-request {
+  module_slug: puppetlabs-sce_linux
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
